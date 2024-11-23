@@ -1,0 +1,15 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Witaj w Katalogu Samochodowym !</h1>
+    <hr>
+    @foreach (var product in Model.Products)
+    {
+            <img class="photo" src="/products/@product.ImageFileName" />
+    }
+</div>
+

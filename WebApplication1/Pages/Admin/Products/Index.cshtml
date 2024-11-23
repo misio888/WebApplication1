@@ -1,0 +1,40 @@
+﻿@page
+@model WebApplication1.Pages.Admin.Products.IndexModel
+@{}
+    <h2 class="text-center mb-5">Lista Samochodów !</h2>
+
+       
+        <div style="text-align: right;">
+            <a class="btn btn-primary" href="/Admin/Products/Create">Nowy Samochód</a>
+        </div>
+  
+
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Nazwa</th>
+            <th>Kategoria</th>
+            <th>Cena</th>
+            <th>Opis</th>
+            <th>Zdjęcie</th>
+            <th>Data Dodania</th>
+        </tr>
+
+@foreach (var product in Model.Products)
+{
+        <tr>
+            <td>@product.Id</td>
+            <td>@product.Name</td>
+            <td>@product.Category</td>
+            <td>@(product.Price)zł</td>
+            <td>@product.Description</td>
+            <td><img src="/products/@product.ImageFileName" width="100"/></td>
+            <td>@product.CratedAt.ToString("MM/dd/yyyy")</td>
+            <td style="white-space:nowrap">
+                <a class="btn btn-primary btn-sm" href="/Admin/products/Edit?id=@product.Id">Edytuj</a>
+                <a class="btn btn-danger btn-sm" href="/Admin/products/Delete?id=@product.Id">Usuń</a>
+            </td>
+        </tr>
+    
+}
+</table>
